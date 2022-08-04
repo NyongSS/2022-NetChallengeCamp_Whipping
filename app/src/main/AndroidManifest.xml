@@ -32,14 +32,14 @@
             </intent-filter>
         </activity>
 
-<!--
+
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation">
                     </activity>
 
--->
+
     </application>
 
 </manifest>

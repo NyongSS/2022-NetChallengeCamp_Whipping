@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/2022-NetChallengeCamp_Whipping/app/src/main/res/layout/activity_scan.xml" value="0.2" />
         <entry key="..\:/barcode_20220802/app/src/main/res/drawable/radius_blue10.xml" value="0.1235" />
         <entry key="..\:/barcode_20220802/app/src/main/res/layout/activity_scan.xml" value="0.264" />
       </map>

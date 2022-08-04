@@ -4,6 +4,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +45,12 @@ public class ScanActivity extends AppCompatActivity {
 
          etBarcode.setText(barcode);
          etTyp.setText(typ);
+         CreateBarcode barcodeImg = new CreateBarcode();
+         barcodeImg.createBarcode(this.toString(),typ,barcode);
+
+
+         //이 안에 인텐트를 만들어서 typ를 create barcode에 보내기.
+            //바코드 만든 곳에서는 내가 만든 이미지를 넣어주기.
         }
     }
         //        /* QR code Scanner Setting */

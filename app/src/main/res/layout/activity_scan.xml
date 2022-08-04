@@ -10,14 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="50dp">
+        android:padding="50dp"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="170dp">
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="scan starten"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:text="scan starten" />
 
         <TextView
             android:id="@+id/textView"
@@ -26,12 +28,11 @@
             android:text="barcode number" />
 
         <TextView
-            android:background="@drawable/radius_gray10"
-            android:textColor="@color/white"
             android:id="@+id/etBarcode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             />
+            android:background="@drawable/radius_gray10"
+            android:textColor="@color/white" />
 
 
         <TextView
@@ -39,15 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="barcode type"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:background="@drawable/radius_gray10"
             android:id="@+id/etTyp"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:background="@drawable/radius_gray10"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
