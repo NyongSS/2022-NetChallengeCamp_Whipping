@@ -6,17 +6,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 public class ScanActivity extends AppCompatActivity {
 
     /* QR code scanner 객체 */
-    private IntentIntegrator qrScan;
+//    private IntentIntegrator qrScan;
 //    private static final int ZXING_CAMERA = 101; //ZXING 카메라 권한요청 ID
 //    private StandardObject standardObj = null;
 
@@ -34,25 +41,44 @@ public class ScanActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
-         String barcode;
-         String typ;
+         String barcodenum;
+         String barcodetype;
 
-         barcode = scanResult.getContents();
-         typ = scanResult.getFormatName();
+         barcodenum = scanResult.getContents();
+         barcodetype = scanResult.getFormatName();
 
          TextView etBarcode = (TextView) findViewById(R.id.etBarcode);
          TextView etTyp = (TextView) findViewById(R.id.etTyp);
+         etBarcode.setText(barcodenum);
+         etTyp.setText(barcodetype);
 
-         etBarcode.setText(barcode);
-         etTyp.setText(typ);
+         ImageView img_barcode;
+         img_barcode = (ImageView)findViewById(R.id.img_barcode) ;
+
+         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+         final int WIDTH = 360;
+         final int HEIGHT = 180;
+
+         try {
+             BitMatrix bitMatrix = multiFormatWriter.encode(barcodenum, BarcodeFormat.valueOf(barcodetype), WIDTH, HEIGHT);
+             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+             img_barcode.setImageBitmap(bitmap);
+         } catch (Exception e) {
+         }
+
          CreateBarcode barcodeImg = new CreateBarcode();
-         barcodeImg.createBarcode(this.toString(),typ,barcode);
+         barcodeImg.createBarcode(this.toString(),barcodetype,barcodenum);
 
 
-         //이 안에 인텐트를 만들어서 typ를 create barcode에 보내기.
-            //바코드 만든 곳에서는 내가 만든 이미지를 넣어주기.
         }
     }
+
+
+
+
+
+
         //        /* QR code Scanner Setting */
 //        qrScan = new IntentIntegrator(this);
 //        qrScan.setPrompt("아래 띄울 문구");

@@ -10,6 +10,12 @@
     <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
     <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
 
+    <!--태블릿에서 연결 어플로 바로 보내도록 함-->
+    <queries>
+        <package android:name="com.google.zxing.client.android" />
+    </queries>
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
